@@ -1,0 +1,25 @@
+#box{
+    height: max-content;
+    width: max-content;
+   border: 1px solid rgb(136, 134, 134);
+   margin: auto;
+   padding: 50px;
+   margin-top: 20vh;
+   box-shadow: 10px 10px rgb(131, 127, 127);
+}
+#addbox{
+    
+  
+   margin: auto;
+   padding: 50px;
+   padding-left: 30vw;
+   padding-right: 30vw;
+}
+#link{
+    color: white;
+    text-decoration: none
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
