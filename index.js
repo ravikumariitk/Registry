@@ -1,7 +1,7 @@
 const { Template } = require('ejs');
 let express = require('express')
 const mongoose = require('mongoose');
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || 3000
 main().catch(err => console.log(err));
 
 async function main() {
