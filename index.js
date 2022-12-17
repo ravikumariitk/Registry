@@ -7,15 +7,44 @@ main().catch(err => console.log(err));
 async function main() {
     await mongoose.connect('mongodb+srv://Ravi_Kumar:Ravi%40123@cluster0.bnkfpnx.mongodb.net/?retryWrites=true');
 }
+let isauthenticate=0;
 let app = express();
 app.set('view engine', "ejs")
+app.use(express.urlencoded())
 app.use('/static', express.static('static'))
 app.get('/', (req, res) => {
+    res.render('new_page')
+})
+app.get('/index.js', (req, res) => {
+    if(isauthenticate==1)
     res.render('index')
+    else{
+        res.redirect('/')
+    }
+})
+app.get('/admlogin', (req, res) => {
+    res.render('admlogin')
+})
+app.get('/admlogin', (req, res) => {
+    res.render('admlogin')
+})
+app.post('/admlogin', (req, res) => {
+  if(req.body.givenUserName=="kravi21"&&req.body.givenPassword=="12345")
+  {
+   isauthenticate=1;
+   res.render('index');
+  }
+  else{
+    res.send("Invalid Request");
+  }
 })
 app.use(express.urlencoded())
 app.get('/add', (req, res) => {
+    if(isauthenticate==1)
     res.render('add')
+    else{
+        res.redirect('/');
+    }
 })
 const kittySchema = new mongoose.Schema({
     Name: String,
@@ -140,7 +169,11 @@ app.post('/find', (req, res) => {
    }
 })
 app.get('/delete',(req,res)=>{
+    if(isauthenticate==1)
     res.render('delete',{data:[],message:""})
+    else{
+        res.redirect('/');
+    }
 })
 app.post('/delete',(req,res)=>{
     Kitten.deleteOne({Roll:req.body.givenRoll},(err,result)=>{
@@ -179,7 +212,11 @@ else{
 }
 })
 app.get('/update',(req,res)=>{
+    if(isauthenticate==1)
     res.render('update', {data:[],message:""})
+    else{
+        res.redirect('/')
+    }
 })
 app.post('/updateData',(req,res)=>{
     // console.log(req.body)

@@ -4,8 +4,11 @@
    border: 1px solid rgb(136, 134, 134);
    margin: auto;
    padding: 50px;
-   margin-top: 20vh;
+   margin-top: 15vh;
    box-shadow: 10px 10px rgb(131, 127, 127);
+}
+#btn{
+    width: 100%;
 }
 #addbox{
     
