@@ -12,7 +12,8 @@
   "description": "Task 5 of P club",
   "main": "index.js",
   "engines": {
-    "node": "14.20.0"
+    "node": "14.21.1",
+    "npm": "8.q9.2"
     
   },
   "devDependencies": {},
