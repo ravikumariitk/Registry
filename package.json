@@ -5,12 +5,15 @@
     "mongoose": "^6.5.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "name": "student-registry",
   "version": "1.0.0",
   "description": "Task 5 of P club",
-  "main": "server.js",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "devDependencies": {},
   "repository": {
     "type": "git",
