@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js"
   },
-  "name": "student-registry",
+  "name": "student_registry",
   "version": "1.0.0",
   "description": "Task 5 of P club",
   "main": "index.js",
@@ -17,12 +17,12 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ravikumariitk/Task-5-_P-Club.git"
+    "url": "git+https://github.com/ravikumariitk/Student_Registry.git"
   },
   "author": "Ravi kumar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ravikumariitk/Task-5-_P-Club/issues"
+    "url": "https://github.com/ravikumariitk/Student_Registry/issues"
   },
-  "homepage": "https://github.com/ravikumariitk/Task-5-_P-Club#readme"
+  "homepage": "https://github.com/ravikumariitk/Student_Registry#readme"
 }
