@@ -17,12 +17,12 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ravikumariitk/Student_Registry.git"
+    "url": "git+https://github.com/ravikumariitk/Registry.git"
   },
   "author": "Ravi kumar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ravikumariitk/Student_Registry/issues"
+    "url": "https://github.com/ravikumariitk/Registry/issues"
   },
-  "homepage": "https://github.com/ravikumariitk/Student_Registry#readme"
+  "homepage": "https://github.com/ravikumariitk/Registry#readme"
 }
