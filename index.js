@@ -1,7 +1,7 @@
 const { Template } = require('ejs');
 let express = require('express')
 const mongoose = require('mongoose');
-
+const PORT = process.env.PORT || 80
 main().catch(err => console.log(err));
 
 async function main() {
@@ -218,6 +218,6 @@ else{
     })
 }
 })
-app.listen(80, () => {
+app.listen(PORT, () => {
     console.log("the server is running at port 80")
 })
