@@ -1,6 +1,7 @@
 <h1>Student Registry</h1><br>
 <p>The home page of this site looks like -</p><br>
-<img src="/static/Screenshot 2022-08-14 191405.png" alt="">
+<img src="/static/home_page.png" alt="">
+<p>There are two options one is "Find student" which is for student and another is "Administration Log In" which is for Administration, only after login the data can be changed or deleted. 
 <p>This Student Registry can perform these operations-<br>
 1.Adding a new student in the database.<br>
 2.Updating the data of existing student.<br>
