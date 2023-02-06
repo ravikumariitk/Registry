@@ -1,4 +1,4 @@
-const { Template } = require('ejs');
+const ejs = require('ejs');
 let express = require('express')
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000
@@ -47,10 +47,16 @@ app.get('/add', (req, res) => {
     }
 })
 const kittySchema = new mongoose.Schema({
-    Name: String,
     Roll: String,
-    Userid: String,
-    Branch: String
+    Name: String,
+    Programme:String,
+    Branch: String,
+    Location:String,
+    User_ID: String,
+    Hall:String,
+    Gender:String,
+    Blood_Group:String,
+    Room:String,
 });
 
 const Kitten = mongoose.model('StudentData', kittySchema);
@@ -58,10 +64,16 @@ app.post('/add', (req, res) => {
 
     const data = new Kitten(
         {
-            Name: req.body.givenName,
             Roll: req.body.givenRoll,
+            Name: req.body.givenName,
             Userid: req.body.givenUser,
-            Branch: req.body.givenBranch
+            Branch: req.body.givenBranch,
+            Hall:req.body.givenHall,
+            Room:req.body.givenRoom,
+            Programme:req.body.givenProgramme,
+            Gender:req.body.givenGender,
+            Blood_Group:req.body.givenBlood_Group,
+            Location:req.body.givenLocation
         });
     data.save()
     res.redirect('/add');
@@ -70,97 +82,97 @@ app.get('/find', (req, res) => {
     res.render('find',{data:[],message:""})
 })
 app.post('/find', (req, res) => {
-    if (req.body.givenName !== '' && req.body.givenRoll == '' && req.body.givenUser == '' && req.body.givenBranch == '') {
+    if (req.body.givenName !== '' && req.body.givenRoll == '' && req.body.givenUser_ID == '' && req.body.givenBranch == '') {
         Kitten.find({ Name: req.body.givenName }, (err, result) => {
            temp=  Object.keys(result).length +" results found!"
            res.render('find',{data:result,message:temp})
         })
     }
-    else if (req.body.givenName == '' && req.body.givenRoll !== '' && req.body.givenUser == '' && req.body.givenBranch == '') {
+    else if (req.body.givenName == '' && req.body.givenRoll !== '' && req.body.givenUser_ID == '' && req.body.givenBranch == '') {
         Kitten.find({ Roll: req.body.givenRoll }, (err, result) => {
             temp=  Object.keys(result).length +" results found!"
             res.render('find',{data:result,message:temp})
         })
-    } else if (req.body.givenName == '' && req.body.givenRoll == '' && req.body.givenUser !== '' && req.body.givenBranch == '') {
-        Kitten.find({ Userid: req.body.givenUser }, (err, result) => {
+    } else if (req.body.givenName == '' && req.body.givenRoll == '' && req.body.givenUser_ID !== '' && req.body.givenBranch == '') {
+        Kitten.find({ User_ID: req.body.givenUser_ID }, (err, result) => {
             temp=  Object.keys(result).length +" results found!"
             res.render('find',{data:result,message:temp})
         })
-    } else if (req.body.givenName == '' && req.body.givenRoll== '' && req.body.givenUser == '' && req.body.givenBranch !== '') {
+    } else if (req.body.givenName == '' && req.body.givenRoll== '' && req.body.givenUser_ID == '' && req.body.givenBranch !== '') {
         Kitten.find({ Branch: req.body.givenBranch }, (err, result) => {
             temp=  Object.keys(result).length +" results found!"
             res.render('find',{data:result,message:temp})
         })
         
     }
-    else if(req.body.givenName!=='' &&req.body.givenRoll!=='' &&req.body.givenUser=='' &&req.body.givenBranch=='' )
+    else if(req.body.givenName!=='' &&req.body.givenRoll!=='' &&req.body.givenUser_ID=='' &&req.body.givenBranch=='' )
    {
     Kitten.find({Name:req.body.givenName,  Roll:req.body.givenRoll},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
            res.render('find',{data:result,message:temp})
       })
    }
-   else if(req.body.givenName!=='' &&req.body.givenRoll=='' &&req.body.givenUser!=='' &&req.body.givenBranch=='' )
+   else if(req.body.givenName!=='' &&req.body.givenRoll=='' &&req.body.givenUser_ID!=='' &&req.body.givenBranch=='' )
    {
-    Kitten.find({Name:req.body.givenName,  Userid:req.body.givenUser},(err,result)=>{
+    Kitten.find({Name:req.body.givenName,User_ID:req.body.givenUser_ID},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
         res.render('find',{data:result,message:temp})
       })
    }
-   else if(req.body.givenName!=='' &&req.body.givenRoll=='' &&req.body.givenUser=='' &&req.body.givenBranch!='' )
+   else if(req.body.givenName!=='' &&req.body.givenRoll=='' &&req.body.givenUser_ID=='' &&req.body.givenBranch!='' )
    {
     Kitten.find({Name:req.body.givenName,  Branch:req.body.givenBranch},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
         res.render('find',{data:result,message:temp})
       })
-   } else if(req.body.givenName=='' &&req.body.givenRoll!=='' &&req.body.givenUser!=='' &&req.body.givenBranch=='' )
+   } else if(req.body.givenName=='' &&req.body.givenRoll!=='' &&req.body.givenUser_ID!=='' &&req.body.givenBranch=='' )
    {
-    Kitten.find({Roll:req.body.givenRoll,Userid:req.body.givenUser},(err,result)=>{
+    Kitten.find({Roll:req.body.givenRoll,User_ID:req.body.givenUser_ID},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
            res.render('find',{data:result,message:temp})
       })
    }
-   else if(req.body.givenName=='' &&req.body.givenRoll!=='' &&req.body.givenUser=='' &&req.body.givenBranch!=='' )
+   else if(req.body.givenName=='' &&req.body.givenRoll!=='' &&req.body.givenUser_ID=='' &&req.body.givenBranch!=='' )
    {
     Kitten.find({Roll:req.body.givenRoll,Branch:req.body.givenBranch},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
         res.render('find',{data:result,message:temp})
       })
    }
-   else if(req.body.givenName=='' &&req.body.givenRoll=='' &&req.body.givenUser!=='' &&req.body.givenBranch!=='' )
+   else if(req.body.givenName=='' &&req.body.givenRoll=='' &&req.body.givenUser_ID!=='' &&req.body.givenBranch!=='' )
    {
-    Kitten.find({Userid:req.body.givenUser,Branch:req.body.givenBranch},(err,result)=>{
+    Kitten.find({User_ID:req.body.givenUser_ID,Branch:req.body.givenBranch},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
            res.render('find',{data:result,message:temp})
       })
    }
-   else if(req.body.givenName!=='' &&req.body.givenRoll!=='' &&req.body.givenUser!=='' &&req.body.givenBranch=='' )
+   else if(req.body.givenName!=='' &&req.body.givenRoll!=='' &&req.body.givenUser_ID!=='' &&req.body.givenBranch=='' )
    {
-    Kitten.find({ Name:req.body.givenName, Roll:req.body.givenRoll,Userid:req.body.givenUser},(err,result)=>{
+    Kitten.find({ Name:req.body.givenName, Roll:req.body.givenRoll,User_ID:req.body.givenUser_ID},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
            res.render('find',{data:result,message:temp})
       })
-   }else if(req.body.givenName!=='' &&req.body.givenRoll!=='' &&req.body.givenUser=='' &&req.body.givenBranch!=='' )
+   }else if(req.body.givenName!=='' &&req.body.givenRoll!=='' &&req.body.givenUser_ID=='' &&req.body.givenBranch!=='' )
    {
     Kitten.find({ Name:req.body.givenName, Roll:req.body.givenRoll,Branch:req.body.givenBranch},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
            res.render('find',{data:result,message:temp})
       })
    }
-   else if(req.body.givenName!=='' &&req.body.givenRoll=='' &&req.body.givenUser!=='' &&req.body.givenBranch!=='' )
+   else if(req.body.givenName!=='' &&req.body.givenRoll=='' &&req.body.givenUser_ID!=='' &&req.body.givenBranch!=='' )
    {
-    Kitten.find({ Name:req.body.givenName, Branch:req.body.givenBranch,Userid:req.body.givenUser},(err,result)=>{
+    Kitten.find({ Name:req.body.givenName, Branch:req.body.givenBranch,User_ID:req.body.givenUser_ID},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
         res.render('find',{data:result,message:temp})
       })
    }
-   else if(req.body.givenName=='' &&req.body.givenRoll!=='' &&req.body.givenUser!=='' &&req.body.givenBranch!=='' )
+   else if(req.body.givenName=='' &&req.body.givenRoll!=='' &&req.body.givenUser_ID!=='' &&req.body.givenBranch!=='' )
    {
-    Kitten.find({ Branch:req.body.givenBranch, Roll:req.body.givenRoll,Userid:req.body.givenUser},(err,result)=>{
+    Kitten.find({ Branch:req.body.givenBranch, Roll:req.body.givenRoll,User_ID:req.body.givenUser_ID},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
         res.render('find',{data:result,message:temp})
       })
-   }else if(req.body.givenName=='' &&req.body.givenRoll=='' &&req.body.givenUser=='' &&req.body.givenBranch=='' )
+   }else if(req.body.givenName==''&&req.body.givenRoll=='' &&req.body.givenUser_ID=='' &&req.body.givenBranch=='' )
    {
     Kitten.find({},(err,result)=>{
         temp=  Object.keys(result).length +" results found!"
@@ -220,7 +232,7 @@ app.get('/update',(req,res)=>{
 })
 app.post('/updateData',(req,res)=>{
     // console.log(req.body)
-    Kitten.updateOne({Roll:req.body.givenRoll},{Name:req.body.givenName,Roll:req.body.givenRoll,Branch:req.body.givenBranch,Userid:req.body.givenUser},(err,result)=>{
+    Kitten.updateOne({Roll:req.body.givenRoll},{Name:req.body.givenName,Roll:req.body.givenRoll,Branch:req.body.givenBranch,User_ID:req.body.givenUser_ID,Programme:req.body.givenProgramme,Hall:req.body.givenHall,Room:req.body.givenRoom,Gender:req.body.givenGender,Blood_Group:req.body.givenBlood_Group,Location:req.body.givenLocation},(err,result)=>{
         console.log(result)
     
     })

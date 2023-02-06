@@ -7,16 +7,33 @@
    margin-top: 15vh;
    box-shadow: 10px 10px rgb(131, 127, 127);
 }
+@media only screen and (max-width: 800px) {
+    #addbox{
+       
+        margin: auto;
+        padding: 50px;
+        padding-left: 4vw;
+        padding-right: 4vw;
+     }
+  }
 #btn{
     width: 100%;
 }
+@media only screen and (max-width: 800px) {
+    #addbox{
+        height: 20vh; 
+        width:80vw ;
+         margin:auto;
+          margin-top: 20vh;
+    }
+  }
 #addbox{
     
-  
-   margin: auto;
-   padding: 50px;
-   padding-left: 30vw;
-   padding-right: 30vw;
+    height: 75vh; 
+    width:40vw ;
+    margin:auto;
+    /* border: 1px solid red; */
+    margin-top: 10vh;
 }
 #link{
     color: white;

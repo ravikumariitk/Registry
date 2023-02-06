@@ -12,12 +12,12 @@
 <form action="/add" method="post" id="addbox">
     <h4>Add new Student</h4><hr>
     <div class="mb-3">
+      <label for="givenRoll"  class="form-label">Roll Number</label>
+      <input type="number" class="form-control" maxlength="6" name="givenRoll" required id="givenRoll">
+    </div>
+    <div class="mb-3">
         <label for="givenName" class="form-label">Name</label>
         <input type="text" class="form-control" name="givenName" required  id="givenName">
-      </div>
-      <div class="mb-3">
-        <label for="givenRoll"  class="form-label">Roll Number</label>
-        <input type="number" class="form-control" maxlength="6" name="givenRoll" required id="givenRoll">
       </div>
       <div class="mb-3">
         <label for="givenUser" class="form-label">User Id</label>
@@ -26,6 +26,30 @@
       <div class="mb-3">
         <label for="givenBranch" class="form-label">Branch</label>
         <input type="text" class="form-control" name="givenBranch" required id="givenBranch">
+      </div>
+      <div class="mb-3">
+        <label for="givenHall" class="form-label">Hall</label>
+        <input type="text" class="form-control" name="givenHall" required id="givenHall">
+      </div>
+      <div class="mb-3">
+        <label for="givenRoom" class="form-label">Room</label>
+        <input type="text" class="form-control" name="givenRoom" required id="givenRoom">
+      </div>
+      <div class="mb-3">
+        <label for="givenProgramme" class="form-label">Programme</label>
+        <input type="text" class="form-control" name="givenProgramme" required id="givenProgramme">
+      </div>
+      <div class="mb-3">
+        <label for="givenGender" class="form-label">Gender(M/F)</label>
+        <input type="text" class="form-control" name="givenGender" required id="givenGender">
+      </div>
+      <div class="mb-3">
+        <label for="givenBlood_Group" class="form-label">Blood Group</label>
+        <input type="text" class="form-control" name="givenBlood_Group" required id="givenBlood_Group">
+      </div>
+      <div class="mb-3">
+        <label for="givenLocation" class="form-label">Location</label>
+        <input type="text" class="form-control" name="givenLocation" required id="givenLocation">
       </div>
       <button type="button" class="btn btn-primary" ><a style="color: white; text-decoration:none" href="/index.js">&larr;Back</a></button>
       <input type="submit" class="btn btn-primary" value="Add">

@@ -34,10 +34,16 @@
                       <div class="card">
                         <div class="card-body">
                             <form  class="grid" action="/updateData" method="post">
-                       Roll number: <input type="number" readonly  name="givenRoll" id="" value=<%= element.Roll %>>
+                         Roll number: <input type="number" readonly  name="givenRoll" id="" value=<%= element.Roll %>>
                         <div>Name:</div><input type="text" name="givenName" value='<%= element.Name %>' >
+                        Programme: <input type="text" name="givenProgramme" id="" value= '<%= element.Programme %>'>
                        Branch: <input type="test" name="givenBranch" id="" value= '<%= element.Branch %>'>
-                       UserId <input type="text" name="givenUser" id="" value= '<%= element.Userid %>'>
+                       UserId: <input type="text" name="givenUser_ID" id="" value= '<%= element.User_ID %>'>
+                       Hall: <input type="text" name="givenHall" id="" value= '<%= element.Hall%>'>
+                       Room No.: <input type="text" name="givenRoom" id="" value= '<%= element.Room %>'>
+                       Gender: <input type="text" name="givenGender" id="" value= '<%= element.Gender %>'>
+                       Blood Group: <input type="text" name="givenBlood_Group" id="" value= '<%= element.Blood_Group %>'>
+                       Location: <input type="text" name="givenLocation" id="" value= '<%= element.Location %>'>
                           <input type="submit"  class="btn btn-primary"  value="Update">
                         </form>
                         </div>
