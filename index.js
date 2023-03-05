@@ -81,6 +81,26 @@ app.post('/add', (req, res) => {
 app.get('/find', (req, res) => {
     res.render('find',{data:[],message:""})
 })
+app.get('/updateMy', (req, res) => {
+    res.render('update_my_login');
+})
+app.post('/updateMy', (req, res) => {
+    Kitten.find({User_ID:req.body.givenUserName,Roll:req.body.givenPassword},(err,result)=>{
+        if(err){
+            res.send('error occured');
+        }else{
+            if(Object.keys(result).length!=0)
+          {
+            Kitten.find({Roll:req.body.givenPassword},(err,result)=>{
+                res.render('selfUpdate',{data:result,message:""})
+            })
+          }
+            else{
+            res.send("No user found");
+            }
+        }
+    })
+})
 app.post('/find', (req, res) => {
     if (req.body.givenName !== '' && req.body.givenRoll == '' && req.body.givenUser_ID == '' && req.body.givenBranch == '') {
         Kitten.find({ Name: req.body.givenName }, (err, result) => {
@@ -237,6 +257,14 @@ app.post('/updateData',(req,res)=>{
     
     })
     res.redirect('/update')
+})
+app.post('/selfupdateData',(req,res)=>{
+    // console.log(req.body)
+    Kitten.updateOne({Roll:req.body.givenRoll},{Name:req.body.givenName,Roll:req.body.givenRoll,Branch:req.body.givenBranch,User_ID:req.body.givenUser_ID,Programme:req.body.givenProgramme,Hall:req.body.givenHall,Room:req.body.givenRoom,Gender:req.body.givenGender,Blood_Group:req.body.givenBlood_Group,Location:req.body.givenLocation},(err,result)=>{
+        console.log(result)
+    
+    })
+    res.redirect('/')
 })
 app.post('/updateSearch',(req,res)=>{
     if(req.body.givenRoll!==""&&req.body.givenName=="")
