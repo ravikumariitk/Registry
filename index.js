@@ -32,6 +32,7 @@ app.post('/admlogin', (req, res) => {
   if(req.body.givenUserName=="kravi21"&&req.body.givenPassword=="12345")
   {
    isauthenticate=1;
+   console.log("hehe");
    res.render('index');
   }
   else{
@@ -296,5 +297,5 @@ else{
 }
 })
 app.listen(PORT, () => {
-    console.log("the server is running at port 80")
+    console.log(`the server is running at port${PORT}`)
 })

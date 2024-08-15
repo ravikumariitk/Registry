@@ -7,52 +7,419 @@
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   </head>
-  <body>
+  <style type="text/css">
+    .account-settings-wrapper {
+        margin: 0;
+        padding-top: 40px;
+        color: #2e323c;
+        position: relative;
+        height: 100%;
+    }
 
-<form action="/add" method="post" id="addbox">
-    <h4>Add new Student</h4><hr>
-    <div class="mb-3">
-      <label for="givenRoll"  class="form-label">Roll Number</label>
-      <input type="number" class="form-control" maxlength="6" name="givenRoll" required id="givenRoll">
+    .account-settings-wrapper .account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+
+    .account-settings-wrapper .account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+    }
+
+    .account-settings-wrapper .account-settings .user-profile .user-avatar img {
+        width: 90px;
+        height: 90px;
+        border-radius: 100px;
+    }
+
+    .account-settings-wrapper .account-settings .user-profile h5.user-name {
+        margin: 0 0 0.5rem 0;
+    }
+
+    .account-settings-wrapper .account-settings .user-profile h6.user-email {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #9fa8b9;
+    }
+
+    .account-settings-wrapper .account-settings .about {
+        margin: 2rem 0 0 0;
+        text-align: center;
+    }
+
+    .account-settings-wrapper .account-settings .about h5 {
+        margin: 0 0 15px 0;
+        color: #007ae1;
+    }
+
+    .account-settings-wrapper .account-settings .about p {
+        font-size: 0.825rem;
+    }
+
+    .account-settings-wrapper .form-control {
+        border: 1px solid #cfd1d8;
+        border-radius: 2px;
+        font-size: 0.825rem;
+        background: #ffffff;
+        color: #2e323c;
+    }
+
+    .account-settings-wrapper .card {
+        background: #ffffff;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+    }
+  body {
+      margin-top: 20px;
+  }
+
+  /* Original Styles */
+  .card.user-card {
+      border-top: none;
+      box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05), 0 -2px 1px -2px rgba(0, 0, 0, 0.04), 0 0 0 -1px rgba(0, 0, 0, 0.05);
+      transition: all 150ms linear;
+  }
+
+  .card {
+      border-radius: 5px;
+      box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+      border: none;
+      margin-bottom: 30px;
+      transition: all 0.3s ease-in-out;
+  }
+
+  .card .card-header {
+      background-color: transparent;
+      border-bottom: none;
+      padding: 25px;
+  }
+
+  .card .card-header h5 {
+      margin-bottom: 0;
+      color: #222;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 10px;
+      line-height: 1.4;
+  }
+
+  .card .card-header+.card-block,
+  .card .card-header+.card-block-big {
+      padding-top: 0;
+  }
+
+  .user-card .card-block {
+      text-align: center;
+  }
+
+  .card .card-block {
+      padding: 25px;
+  }
+
+  .user-card .card-block .user-image {
+      position: relative;
+      margin: 0 auto;
+      display: inline-block;
+      padding: 5px;
+      width: 210px;
+      height: 210px;
+  }
+
+  .user-card .card-block .user-image img {
+      z-index: 20;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 200px;
+      height: 200px;
+  }
+
+  .img-radius {
+      border-radius: 50%;
+  }
+
+  .f-w-600 {
+      font-weight: 600;
+  }
+
+  .m-b-10 {
+      margin-bottom: 10px;
+  }
+
+  .m-t-25 {
+      margin-top: 25px;
+  }
+
+  .m-t-15 {
+      margin-top: 15px;
+  }
+
+  .card .card-block p {
+      line-height: 1.4;
+  }
+
+  .text-muted {
+      color: #919aa3 !important;
+  }
+
+  .user-card .card-block .activity-leval li.active {
+      background-color: #2ed8b6;
+  }
+
+  .user-card .card-block .activity-leval li {
+      display: inline-block;
+      width: 15%;
+      height: 4px;
+      margin: 0 3px;
+      background-color: #ccc;
+  }
+
+  .user-card .card-block .counter-block {
+      color: #fff;
+  }
+
+  .bg-c-blue {
+      background: linear-gradient(45deg, #4099ff, #73b4ff);
+  }
+
+  .bg-c-green {
+      background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+  }
+
+  .bg-c-yellow {
+      background: linear-gradient(45deg, #FFB64D, #ffcb80);
+  }
+
+  .bg-c-pink {
+      background: linear-gradient(45deg, #FF5370, #ff869a);
+  }
+
+  .m-t-10 {
+      margin-top: 10px;
+  }
+
+  .p-20 {
+      padding: 20px !important;
+  }
+
+  .user-card .card-block .user-image:before {
+      content: "";
+      border: 3px solid #4099ff;
+      background: #4099ff;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 0;
+  }
+
+  .user-card .card-block .user-image:after {
+      content: "";
+      background: #fff;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: absolute;
+      left: 11px;
+      top: 11px;
+  }
+
+  .user-card .card-block .user-image .overlay {
+      z-index: 1;
+      position: absolute;
+      top: 30%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 60px;
+      height: 60px;
+  }
+
+  .user-card .card-block .user-image .overlay i {
+      line-height: 60px;
+      font-size: 30px;
+  }
+
+  .user-card .card-block .user-image:hover .overlay {
+      display: block;
+  }
+
+  .user-card .card-block .user-image .overlay {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+  }
+
+  .text-c-blue {
+      color: #4099ff;
+  }
+
+  .p-t-40 {
+      padding-top: 40px;
+  }
+
+  .p-b-20 {
+      padding-bottom: 20px;
+  }
+
+  .m-b-20 {
+      margin-bottom: 20px;
+  }
+
+  /* Styles for account-settings-wrapper */
+  .account-settings-wrapper {
+      margin: 0;
+      padding-top: 40px;
+      color: #2e323c;
+      position: relative;
+      height: 100%;
+  }
+
+  .account-settings-wrapper .account-settings .user-profile {
+      margin: 0 0 1rem 0;
+      padding-bottom: 1rem;
+      text-align: center;
+  }
+
+  .account-settings-wrapper .account-settings .user-profile .user-avatar {
+      margin: 0 0 1rem 0;
+  }
+
+  .account-settings-wrapper .account-settings .user-profile .user-avatar img {
+      width: 90px;
+      height: 90px;
+      border-radius: 100px;
+  }
+
+  .account-settings-wrapper .account-settings .user-profile h5.user-name {
+      margin: 0 0 0.5rem 0;
+  }
+
+  .account-settings-wrapper .account-settings .user-profile h6.user-email {
+      margin: 0;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #9fa8b9;
+  }
+
+  .account-settings-wrapper .account-settings .about {
+      margin: 2rem 0 0 0;
+      text-align: center;
+  }
+
+  .account-settings-wrapper .account-settings .about h5 {
+      margin: 0 0 15px 0;
+      color: #007ae1;
+  }
+
+  .account-settings-wrapper .account-settings .about p {
+      font-size: 0.825rem;
+  }
+
+  .account-settings-wrapper .form-control {
+      border: 1px solid #cfd1d8;
+      border-radius: 2px;
+      font-size: 0.825rem;
+      background: #ffffff;
+      color: #2e323c;
+  }
+
+  .account-settings-wrapper .card {
+      background: #ffffff;
+      border-radius: 5px;
+      border: 0;
+      margin-bottom: 1rem;
+  }
+</style>
+  <body>
+    <form action="/add" method="post" id="">
+      <div class="container account-settings-wrapper" style="margin-left: 250px;">
+        <div class="row gutters">
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <h2 style="padding-top: 20px; padding-left: 10px;">Add a new Student</h2>
+                    <hr>
+                    <div class="card-body">
+                        <div class="row gutters">
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="fullName">Roll Number</label>
+                                <input type="text" class="form-control" name="givenRoll" id="fullName" placeholder="Enter roll number">
+                            </div>
+                        </div>
+                          
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="fullName">User Name</label>
+                                <input type="text" class="form-control" name="givenUser_ID" id="fullName" placeholder="Enter user name">
+                            </div>
+                        </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="fullName">Branch</label>
+                                <input type="text" class="form-control" name="givenBranch" id="fullName" placeholder="Enter branch(Electrical Engg.)">
+                            </div>
+                        </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="fullName">Current Hall</label>
+                                <input type="text" class="form-control" name="givenHall" id="fullName" placeholder="Enter hall number(H12)">
+                            </div>
+                        </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">Room Number</label>
+                                    <input type="text" class="form-control" name="givenRoom" id="fullName" placeholder="Enter room number">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="eMail">Programme</label>
+                                    <input  class="form-control" name="givenProgramme" id="eMail" placeholder="Enter Programme (BTech)">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">User Id</label>
+                                    <input type="text" class="form-control" name="givenUser_ID" id="phone" placeholder="Enter IITK user id">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="website">Gender</label>
+                                    <input type="text" class="form-control" name="givenGender" id="website" placeholder="Enter gender(M/F)">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                              <div class="form-group">
+                                  <label for="website">Blood Grp</label>
+                                  <input type="text" class="form-control" name="givenBlood_Group" id="website" placeholder="Enter blood grp(O+)">
+                              </div>
+                          </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="website">Location</label>
+                                <input type="text" class="form-control" name="givenLocation" id="website" placeholder="Enter permanent address">
+                            </div>
+                          </div>
+                        </div><br>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-left">
+                                    <a href="/index.js" class="btn btn-secondary">Cancel</a>
+                                    <button type="submit" id="submit" name="submit" class="btn btn-primary">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="givenName" class="form-label">Name</label>
-        <input type="text" class="form-control" name="givenName" required  id="givenName">
-      </div>
-      <div class="mb-3">
-        <label for="givenUser" class="form-label">User Id</label>
-        <input type="text" class="form-control" name="givenUser" required  id="givenUser">
-      </div>
-      <div class="mb-3">
-        <label for="givenBranch" class="form-label">Branch</label>
-        <input type="text" class="form-control" name="givenBranch" required id="givenBranch">
-      </div>
-      <div class="mb-3">
-        <label for="givenHall" class="form-label">Hall</label>
-        <input type="text" class="form-control" name="givenHall" required id="givenHall">
-      </div>
-      <div class="mb-3">
-        <label for="givenRoom" class="form-label">Room</label>
-        <input type="text" class="form-control" name="givenRoom" required id="givenRoom">
-      </div>
-      <div class="mb-3">
-        <label for="givenProgramme" class="form-label">Programme</label>
-        <input type="text" class="form-control" name="givenProgramme" required id="givenProgramme">
-      </div>
-      <div class="mb-3">
-        <label for="givenGender" class="form-label">Gender(M/F)</label>
-        <input type="text" class="form-control" name="givenGender" required id="givenGender">
-      </div>
-      <div class="mb-3">
-        <label for="givenBlood_Group" class="form-label">Blood Group</label>
-        <input type="text" class="form-control" name="givenBlood_Group" required id="givenBlood_Group">
-      </div>
-      <div class="mb-3">
-        <label for="givenLocation" class="form-label">Location</label>
-        <input type="text" class="form-control" name="givenLocation" required id="givenLocation">
-      </div>
-      <button type="button" class="btn btn-primary" ><a style="color: white; text-decoration:none" href="/index.js">&larr;Back</a></button>
-      <input type="submit" class="btn btn-primary" value="Add">
     </form>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
